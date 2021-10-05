@@ -8,18 +8,17 @@
 </head>
 <body>
     <?php
-        $fNaci = "1956-02-27";
+        $fNaci = "28-03-1956";
         $añoActual = date("Y-m-d");
-        $edad = $date_diff(date_create($fNaci), date_create($año_actual));
+        $edad = date_diff(date_create($fNaci), date_create($año_actual));
         
-        echo $edad->format('%y');
-        if ($edad->format('%y') >= 18 && $edad->format('%y') < 65 ){
+        if (($edad->y) >= 18 && ($edad->y < 65)){
             echo "Puedes pasar";
         }
-        elseif ($edad->format('%y') < 18) {
+        elseif (($edad->y) < 18) {
             echo "No puedes pasar";
         }
-        else if ($edad->format('%y')>= 65) {
+        else if (($edad->y) >= 65) {
             echo "Demasiado mayor para entrar";
         }
     ?>
