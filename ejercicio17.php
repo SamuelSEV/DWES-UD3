@@ -21,39 +21,40 @@
         $dVacio = "";
         $iVacio = "";
         $eVacio = "";
+        $rVacio = "";
+        $diaVacio = "";
+        $checkVacio = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            include 'funcionseguro.php';
             $nombre = $_POST["nombre"];
             $apellidos = $_POST["apellidos"];
             $direccion = $_POST["direccion"];
-            $estudios = $_POST["instituto"];
+            $estudios = $_POST["estudios"];
+            $instituto = $_POST["instituto"];
             $dia = $_POST["dia"];
             $red = $_POST["red"];
             $checkbox = $_POST["checkbox"];
+            $texto = $_POST["texto"];
 
-            if ($red = "") {
+            if (!isset($_POST["red"])) {
+                //echo $red;
                 $rVacio = "No ha seleccionado ninguno";
             }
 
-            if(isset($_POST["checbox"])){
-                foreach($_POST["checkbox"] as $valorCheckbox){
-                    echo " ".$valorCheckbox;
-                }
-            }
-            else {
-                echo "Ninguno de los checkbox ha sido activado.";
+            if(!isset($_POST["checkbox"])){
+                $checkVacio = "Ninguno de los checkbox ha sido activado.";
+                //foreach($_POST["checkbox"] as $valorCheckbox){
+                    //echo " ".$valorCheckbox;
+                //}
             }
 
-            if(isset($_POST["dia"])){
-                foreach($_POST["dia"] as $valorSelectMultiple){
-                    echo " ".$valorSelectMultiple;
-                }
+            if(!isset($_POST["dia"])){
+                $diaVacio = "Ninguna de las opciones de la lista han sido seleccionadas.";
+                //foreach($_POST["dia"] as $valorSelectMultiple){
+                    //echo " ".$valorSelectMultiple;
+                //}
             }
-            else {
-                echo "Ninguna de las opciones de la lista han sido seleccionadas.";
-            }
-
-
 
             if (!preg_match("/^IES/", $instituto)) {
                 $errorinstituto = "El instituto debe comenzar por IES";
@@ -61,7 +62,7 @@
             if (empty($nombre)) {
                 $nVacio = "El nombre debe estar relleno <br>";
             }
-            if (empty($apellido)) {
+            if (empty($apellidos)) {
                 $aVacio = "El apellido debe estar relleno <br>";
             }
             if (empty($direccion)) {
@@ -82,35 +83,38 @@
         <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
             <p>
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" value="">
+                <input type="text" name="nombre" value="<?php echo $nombre?>">
                 <span style="color:red"><?php echo $nVacio?> </span>
             </p>
             <p>
                 <label for="apellidos">Apellidos</label>
-                <input type="text" name="apellidos" value="">
+                <input type="text" name="apellidos" value="<?php echo $apellidos?>">
                 <span style="color:red"><?php echo $aVacio?> </span>
             </p>
             <p>
                 <label for="direccion">Direccion</label>
-                <input type="text" name="direccion" value="">
+                <input type="text" name="direccion" value="<?php echo $direccion?>">
                 <span style="color:red"><?php echo $dVacio?> </span>
             </p>
             <p>
                 <label for="red">Wifi</label>    
-                <input type="radio" name="red" checked>
+                <input type="radio" name="red" value="red" >
                 <label for="red">Cable</label>    
-                <input type="radio" name="red" checked>
+                <input type="radio" name="red" value="red">
                 <label for="red">Fibra</label>    
-                <input type="radio" name="red" checked>
+                <input type="radio" name="red" value="red">
+                <span style="color:red"><?php echo $rVacio?> </span>
             </p>
+            
+
             <p>
                 <label for="instituto">Instituto</label>
-                <input type="text" name="instituto" value="">
-                <span style="color:red"><?php echo $iVacio?> </span>
+                <input type="text" name="instituto" value="<?php echo $instituto?>">
+                <span style="color:red"><?php echo $iVacio, $errorinstituto?> </span>
             </p>
             <p>
                 <label for="estudios">Estudios elegidos</label>
-                <input type="text" name="estudios" value="">
+                <input type="text" name="estudios" value="<?php echo $estudios?>">
                 <span style="color:red"><?php echo $eVacio?> </span>
             </p>
             <p>
@@ -121,6 +125,7 @@
                 <option value="jueves">Jueves</option>
                 <option value="viernes">Viernes</option>
             </select>
+            <span style="color:red"><?php echo $diaVacio?> </span>
             </p>
             <p>
                 <input type="checkbox" name="checkbox[]" value="historia">
@@ -132,8 +137,9 @@
                 <input type="checkbox" name="checkbox[]" value="matematicas">
                 <label for="matematicas">Matematicas</label>
             </p>
+            <span style="color:red"><?php echo $checkVacio?> </span>
             <p>
-                <textarea name="texto" id="" cols="30" rows="10" placeholder="Inserte texto"></textarea>
+                <textarea name="texto" id="" cols="30" rows="10" placeholder="Inserte texto" value="<?php echo $texto?>"></textarea>
             </p>
             <p>
                 <input type="submit" value="enviar">
