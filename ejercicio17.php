@@ -124,8 +124,9 @@
                 <option value="miercoles">Miercoles</option>
                 <option value="jueves">Jueves</option>
                 <option value="viernes">Viernes</option>
+                <span style="color:red"><?php echo $diaVacio?> </span>
             </select>
-            <span style="color:red"><?php echo $diaVacio?> </span>
+            
             </p>
             <p>
                 <input type="checkbox" name="checkbox[]" value="historia">
@@ -136,21 +137,17 @@
                 <label for="lengua">Lengua</label>
                 <input type="checkbox" name="checkbox[]" value="matematicas">
                 <label for="matematicas">Matematicas</label>
+                <span style="color:red"><?php echo $checkVacio?> </span>
             </p>
-            <span style="color:red"><?php echo $checkVacio?> </span>
+            
             <p>
                 <textarea name="texto" id="" cols="30" rows="10" placeholder="Inserte texto" value="<?php echo $texto?>"></textarea>
             </p>
             <p>
                 <input type="submit" value="enviar">
-                <input type="reset" value="borrar">
+                <input type="reset" >
             </p>
         </form>
     </fieldset>
-    
-    
-    <?php
-        
-    ?>
 </body>
 </html>
