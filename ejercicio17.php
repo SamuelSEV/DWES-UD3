@@ -75,6 +75,7 @@
             if (empty($estudios)) {
                 $eVacio = "Los estudios deben estar rellenos <br>";
             }
+           
 
         }
 
@@ -99,11 +100,11 @@
             </p>
             <p>
                 <label for="red">Wifi</label>    
-                <input type="radio" name="red" value="red" >
+                <input type="radio" name="red" value="wifi" >
                 <label for="red">Cable</label>    
-                <input type="radio" name="red" value="red">
+                <input type="radio" name="red" value="cable">
                 <label for="red">Fibra</label>    
-                <input type="radio" name="red" value="red">
+                <input type="radio" name="red" value="fibra">
                 <span style="color:red"><?php echo $rVacio?> </span>
             </p>
             

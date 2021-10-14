@@ -18,16 +18,23 @@
         $poblacionVacio = "";
         $cpVacio = "";
         $imagen;
+        $correcto = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $poblacion = $_POST["poblacion"];
             $cp = $_POST["cp"];
             $provincia = $_POST["provincia"];
             $texto = $_POST["texto"];
-            $imagen = $_POST["imagen"];
+            $imagen = $_FILE["imagen"]["name"];
             $texto = strip_tags($texto);
             $texto = stripslashes($texto);
             $texto = htmlspecialchars($texto);
+
+            if($imagen = ""){
+                $imagen = "Imagen no enviada";
+            }else{
+                $imagen = "Imagen enviada";
+            }
 
             if (!isset($_POST["provincia"])) {
                 
@@ -47,9 +54,15 @@
             if (!preg_match("/^[0-9]+$/", $cp)) {
                 $errorCp = "Debe contener solo numeros";
             }
+            if (!htmlentities($_SERVER['PHP_SELF'])) { 
+                $correcto = "htmlentities(\$_SERVER['PHP_SELF'])";
+            } 
+            else { 
+                $correcto = "correcto.php";
+            }
         }
     ?>
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+    <form action="<?php echo $correcto ?>" method="POST">
         <p>
             <label for="poblacion">Poblacion</label>
             <input type="text" name="poblacion" value="<?php echo $poblacion?>">
@@ -62,28 +75,29 @@
         </p>
         <p>
             <label for="provincia">Sevilla</label>    
-            <input type="radio" name="provincia" value="provincia" >
+            <input type="radio" name="provincia" value="sevilla" >
             <label for="provincia">Huelva</label>    
-            <input type="radio" name="provincia" value="provincia">
+            <input type="radio" name="provincia" value="huelva">
             <label for="provincia">Cadiz</label>    
-            <input type="radio" name="provincia" value="provincia">
+            <input type="radio" name="provincia" value="cadiz">
             <label for="provincia">Malaga</label>    
-            <input type="radio" name="provincia" value="provincia" >
+            <input type="radio" name="provincia" value="malaga" >
             <label for="provincia">Cordoba</label>    
-            <input type="radio" name="provincia" value="provincia">
+            <input type="radio" name="provincia" value="cordoba">
             <label for="provincia">Jaen</label>    
-            <input type="radio" name="provincia" value="provincia">
+            <input type="radio" name="provincia" value="jaen">
             <label for="provincia">Almeria</label>    
-            <input type="radio" name="provincia" value="provincia">
+            <input type="radio" name="provincia" value="almeria">
             <label for="provincia">Granada</label>    
-            <input type="radio" name="provincia" value="provincia">
+            <input type="radio" name="provincia" value="granada">
             <span style="color:red"><?php echo $provinciaVacio?> </span>
         </p>
         <p>
-        <textarea name="texto" id="" cols="30" rows="10" placeholder="Inserte texto" value="<?php echo $texto?>"></textarea>
+        <textarea name="texto" id="" cols="30" rows="10" placeholder="Descripcion del municipio" value="<?php echo $texto?>"></textarea>
         </p>
         <p>
-            <input type="image" src="" alt="" name="imagen">
+            <label for="imagen">Imagen</label>
+            <input type="file"  id="imagen" name="imagen" accept="image/*">
         </p>
         <p>
             <input type="submit" value="enviar">
