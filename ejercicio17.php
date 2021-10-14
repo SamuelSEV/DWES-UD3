@@ -24,6 +24,7 @@
         $rVacio = "";
         $diaVacio = "";
         $checkVacio = "";
+        $errorinstituto = "";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             include 'funcionseguro.php';
