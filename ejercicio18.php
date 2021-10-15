@@ -18,7 +18,7 @@
         $poblacionVacio = "";
         $cpVacio = "";
         $imagen;
-        $correcto = "";
+        $correcto ;
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $poblacion = $_POST["poblacion"];
@@ -36,33 +36,50 @@
                 $imagen = "Imagen enviada";
             }
 
-            if (!isset($_POST["provincia"])) {
-                
-                $provinciaVacio = "No ha seleccionado ninguno";
-            }
+            
 
             if (empty($poblacion)) {
                 $poblacionVacio = "La poblacion debe estar relleno <br>";
+                $correcto = false;
+            }
+            else {
+                $correcto = true;
             }
             if (empty($cp)) {
                 $cpVacio = "El codigo postal debe estar relleno <br>";
+                $correcto = false;
+            }
+            else {
+                $correcto = true;
             }
 
             if (!preg_match("/^[a-zA-Z\s]+$/", $poblacion)) {
                 $errorPoblacion = "Debe contener solo texto";
+                $correcto = false;
+            }
+            else {
+                $correcto = true;
             }
             if (!preg_match("/^[0-9]+$/", $cp)) {
                 $errorCp = "Debe contener solo numeros";
+                $correcto = false;
             }
-            if (!htmlentities($_SERVER['PHP_SELF'])) { 
-                $correcto = "htmlentities(\$_SERVER['PHP_SELF'])";
-            } 
-            else { 
-                $correcto = "correcto.php";
+            else {
+                $correcto = true;
+            }
+            if (!isset($_POST["provincia"])) {
+                $provinciaVacio = "No ha seleccionado ninguno";
+                $correcto = false;
+            }
+            else {
+                $correcto = true;
+            }
+            if ($correcto) {
+                header("Location: /DWES-UD3/correcto.php");
             }
         }
     ?>
-    <form action="<?php echo $correcto ?>" method="POST">
+    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>" method="POST">
         <p>
             <label for="poblacion">Poblacion</label>
             <input type="text" name="poblacion" value="<?php echo $poblacion?>">
