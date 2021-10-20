@@ -8,18 +8,18 @@
 </head>
 <body>
     <?php
-        $v1 = 10;
-        $v2=2;
-        $v3 = 3;
+        $v1 = 50;
+        $v2=20;
+        $v3 = 11;
 
         if ($v1 > $v2 && $v1 > $v3) {
-            echo $v1;
+            echo "La variable mayor es: " . $v1;;
         }
-        else if ( $v2 < $v1 && $v2 > $v3) {
-            echo $v2;
+        else if ( $v2 > $v1 && $v2 > $v3) {
+            echo "La variable mayor es: " . $v2;;
         }
-        else {
-            echo $v3;
+        else if  ( $v3 > $v1 && $v3 > $v2){
+            echo "La variable mayor es: " . $v3;
         }
     ?>
 </body>

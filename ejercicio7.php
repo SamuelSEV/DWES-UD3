@@ -8,9 +8,9 @@
 </head>
 <body>
     <?php
-        //foreach ($_SERVER as $vServidor) {
-            //echo $vServidor . "<br>";
-        //}
+        foreach ($_SERVER as $vServidor) {
+            echo $vServidor . "<br>";
+        }
 
         foreach ($_SERVER as $clave => $valor) {
             echo $clave . " ---> " . $valor . "<br>" ;

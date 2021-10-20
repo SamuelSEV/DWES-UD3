@@ -9,7 +9,7 @@
 <body>
     <?php
         $i=1;
-        $nTabla = 5;
+        $nTabla = 32;
 
         do {
             echo "$nTabla x $i = " . $nTabla*$i."<br/>";

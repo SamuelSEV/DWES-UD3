@@ -19,12 +19,12 @@
             var_dump($matriz);
             echo "<br>";
             echo "<tr><th>Nombre</th> <th>precio</th> <th>stock</th> <th>identificador</th></tr>";
-            foreach ($matriz as $key => $value) {
+            foreach ($matriz as $key) {
                 echo "<tr>";
-                echo "<td>$matriz[$key]['Nombre']</td>";  
-                echo "<td>$matriz[$key]['precio']</td>";
-                echo "<td>$matriz[$key]['stock']</td>";
-                echo "<td>$matriz[$key]['identificador']</td>";
+                echo "<td>" . $key['Nombre'] . "</td>";  
+                echo "<td>" . $key['precio'] . "</td>";
+                echo "<td>" . $key['stock'] . "</td>";
+                echo "<td>" . $key['identificador'] . "</td>";
                 echo "</tr>";
             }
 

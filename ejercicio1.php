@@ -12,10 +12,10 @@
         $v2=2;
 
         if ($v1 < $v2) {
-            echo $v1;
+            echo "La variable mayor es: " . $v2;
         }
-        else {
-            echo $v2;
+        else if ($v1 > $v2) {
+            echo "La variable mayor es: " . $v1;
         }
     ?>
 </body>

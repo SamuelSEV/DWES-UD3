@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        $n = 10;
+        $n = 5;
 
         switch ($n) {
             case 1:
@@ -17,7 +17,6 @@
             case 2:
                 echo "MARTES";
                 break;
-
             case 3:
                 echo "MIERCOLES";
                 break;
@@ -34,7 +33,7 @@
                 echo "DOMINGO";
                 break;
             default:
-                echo "No hay dia de la semana que se corresponda conn $n";
+                echo "No hay dia de la semana que se corresponda con $n";
                 break;
         }
     ?>

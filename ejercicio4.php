@@ -9,7 +9,7 @@
 <body>
     <?php
         $i=1;
-        $nTabla = 5;
+        $nTabla = 46;
         while ($i<=10) {
             echo "$nTabla x $i = " . $nTabla*$i."<br/>";
             $i++;

@@ -35,7 +35,7 @@
         var_dump($Meses);
         echo "<br>";
 
-        $Meses[5] = "May";
+        $Meses[5] = "Mayo";
         $Meses[] = "Julio";
         $Meses[] = "Agosto";
         $Meses[] = "Septiembre";
